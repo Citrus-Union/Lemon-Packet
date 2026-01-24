@@ -144,6 +144,11 @@ hash = "9af0ba3f2fffa34fd00f40b06156f53407ad3991ac87467bcb1925cf81a7fb1a"
 metafile = true
 
 [[files]]
+file = "mods/gamma-utils.pw.toml"
+hash = "cc4a12cee04af27f3ca40ebe8d9509292a35f7b944cb5892de9adfaeecae6fda"
+metafile = true
+
+[[files]]
 file = "mods/gca.pw.toml"
 hash = "0349791abde50decad2979e3031922dfa054e0dda58827e7a7d545d49a0f455b"
 metafile = true
@@ -396,4 +401,19 @@ metafile = true
 [[files]]
 file = "mods/yacl.pw.toml"
 hash = "976682e613b79e310fe22c5ddc2322bfc76665295cd9fa885787dfa08b7764b2"
+metafile = true
+
+[[files]]
+file = "resourcepacks/acaciachan-xaero-map-translation.pw.toml"
+hash = "a763f371804ad4bd8d571f1a000fba61a6eaa2f295a347683fd10063110b4d12"
+metafile = true
+
+[[files]]
+file = "resourcepacks/xk-redstone-display.pw.toml"
+hash = "27750d59c2954e738be85531daf1f7b079d59de4973447b100d88b4fe2c6d1c5"
+metafile = true
+
+[[files]]
+file = "shaderpacks/bsl-shaders.pw.toml"
+hash = "71cf0534dd8b064616a6120c2b93023340bc79d2db21a1d9197087b9c9d7eee5"
 metafile = true
