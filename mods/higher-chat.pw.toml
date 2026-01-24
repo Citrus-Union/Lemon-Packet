@@ -1,0 +1,13 @@
+name = "Higher Chat (chat above armor bar)"
+filename = "higher-chat-1.7.4.jar"
+side = "client"
+
+[download]
+url = "https://cdn.modrinth.com/data/6mzqOyq8/versions/pQ66o6eO/higher-chat-1.7.4.jar"
+hash-format = "sha512"
+hash = "fc2412cd6f6c5bccd67583da530a9d5353b0184ed26c4aaf0dc9a8139f2b50143ca8848982a12c6893a106ead9f9aeb3501486c05645deec2a4f74d164a87ff0"
+
+[update]
+[update.modrinth]
+mod-id = "6mzqOyq8"
+version = "pQ66o6eO"

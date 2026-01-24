@@ -1,0 +1,65 @@
+name: Build
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+    inputs:
+      publish_release:
+        description: Publish release
+        type: boolean
+        default: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Install packwiz
+        run: go install github.com/packwiz/packwiz@latest
+
+      - name: Add Go bin to PATH
+        run: echo "$HOME/go/bin" >> "$GITHUB_PATH"
+
+      - name: Read versions
+        id: vars
+        run: |
+          VERSION=$(awk -F'"' '$1 ~ /version =/ {print $2; exit}' pack.toml)
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+          echo "mc=1.21.10" >> "$GITHUB_OUTPUT"
+
+      - name: Export pack
+        run: packwiz modrinth export
+
+      - name: Rename pack (push/pr or no release)
+        if: github.event_name != 'workflow_dispatch' || inputs.publish_release != 'true'
+        run: |
+          mv "Lemon Packet-${{ steps.vars.outputs.version }}.mrpack" \
+            "Lemon-Packet-v${{ steps.vars.outputs.version }}-mc${{ steps.vars.outputs.mc }}-build.${{ github.run_number }}.mrpack"
+
+      - name: Rename pack (release)
+        if: github.event_name == 'workflow_dispatch' && inputs.publish_release == 'true'
+        run: |
+          mv "Lemon Packet-${{ steps.vars.outputs.version }}.mrpack" \
+            "Lemon-Packet-v${{ steps.vars.outputs.version }}-mc${{ steps.vars.outputs.mc }}.mrpack"
+
+      - name: Upload artifact (push/pr or no release)
+        if: github.event_name != 'workflow_dispatch' || inputs.publish_release != 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          path: Lemon-Packet-v${{ steps.vars.outputs.version }}-mc${{ steps.vars.outputs.mc }}-build.${{ github.run_number }}.mrpack
+
+      - name: Publish release
+        if: github.event_name == 'workflow_dispatch' && inputs.publish_release == 'true'
+        uses: Kir-Antipov/mc-publish@v3.3
+        with:
+          files: Lemon-Packet-v${{ steps.vars.outputs.version }}-mc${{ steps.vars.outputs.mc }}.mrpack
+          name: ${{ format('{0} v{1} for mc{2}', 'Lemon Packet', steps.vars.outputs.version, '1.21.10') }}
+          version: v${{ steps.vars.outputs.version }}
+          modrinth-id: AABBCCDD
+          modrinth-token: ${{ secrets.MODRINTH_TOKEN }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}

@@ -1,0 +1,13 @@
+name = "EssentialClient"
+filename = "EssentialClient-2.3.3+1.21.9.jar"
+side = "client"
+
+[download]
+url = "https://cdn.modrinth.com/data/sH0dfrKf/versions/XL4Dwztv/EssentialClient-2.3.3%2B1.21.9.jar"
+hash-format = "sha512"
+hash = "08a0362455feecc560762df00d8c64a72defe9172abca4a4e44f7ba172151c31a83669d1a59d247386d6e532a2e18ec493c19f95dcd073a0bb7f7b10b90e108a"
+
+[update]
+[update.modrinth]
+mod-id = "sH0dfrKf"
+version = "XL4Dwztv"

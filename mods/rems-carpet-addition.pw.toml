@@ -1,0 +1,13 @@
+name = "REMS-Carpet-Addition"
+filename = "REMS-Carpet-Addition-mc1.21.10-v1.3.10.jar"
+side = "both"
+
+[download]
+url = "https://cdn.modrinth.com/data/175yf82Z/versions/qC7rbfS8/REMS-Carpet-Addition-mc1.21.10-v1.3.10.jar"
+hash-format = "sha512"
+hash = "d822dd1cb52534872fcca95e1c68923d82cfd06f4b83102a2ee9473b2c927d004cf60d983b7c16a52a555431efb595e31bc563a62eea882e045a5b666badef47"
+
+[update]
+[update.modrinth]
+mod-id = "175yf82Z"
+version = "qC7rbfS8"

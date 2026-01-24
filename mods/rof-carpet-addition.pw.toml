@@ -1,0 +1,15 @@
+name = "ROF-Carpet-Addition"
+filename = "ROFCarpetAddition-1.21.10-1.1.42.jar"
+side = "both"
+
+[download]
+url = "https://github.com/Melationin/ROF-Carpet-Addition/releases/download/1.1.4/ROFCarpetAddition-1.21.10-1.1.42.jar"
+hash-format = "sha256"
+hash = "5f14b32feecdaddf5cad5226e4fb521b6c310083b255ee3a5d561091333d23c6"
+
+[update]
+[update.github]
+branch = "master"
+regex = "^.*-1\\.21\\.10-.*\\.jar"
+slug = "Melationin/ROF-Carpet-Addition"
+tag = "1.1.4"

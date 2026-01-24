@@ -1,0 +1,13 @@
+name = "Lemon Packet"
+author = "小柠檬lemon酱"
+version = "1.0.0"
+pack-format = "packwiz:1.1.0"
+
+[index]
+file = "index.toml"
+hash-format = "sha256"
+hash = "59610c3893bc5961cbc66e24de1d09b9d07d2eff00799c463efbbc4a340e47b2"
+
+[versions]
+fabric = "0.18.4"
+minecraft = "1.21.10"

@@ -1,0 +1,13 @@
+name = "More Statistics"
+filename = "more-statistics-v2.3.16-mc1.21.10.jar"
+side = "server"
+
+[download]
+url = "https://cdn.modrinth.com/data/EhoUIqvO/versions/ArmoKn2D/more-statistics-v2.3.16-mc1.21.10.jar"
+hash-format = "sha512"
+hash = "5414cee5d1e19fd31abb2c1a589830858ae4a2876e708b8755cfe24600be16e7e6687b1c3625fc79f67a42c335fddc6f30b6f80ef974f81a454a05343354bf0d"
+
+[update]
+[update.modrinth]
+mod-id = "EhoUIqvO"
+version = "ArmoKn2D"
