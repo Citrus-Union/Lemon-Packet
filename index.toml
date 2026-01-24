@@ -364,6 +364,11 @@ hash = "0b2c9c8298a832089b67e8e56b84fd7ac772cd2d122ac0e3ae85e27a1998708f"
 metafile = true
 
 [[files]]
+file = "mods/vkm.pw.toml"
+hash = "e621c1145f611e3b27e5c3998cc79e50df53b8e2ab5f0e1ddb9805a6a1a24976"
+metafile = true
+
+[[files]]
 file = "mods/wi-zoom.pw.toml"
 hash = "7e86cdd3ccb6ab8216c237d6d8c44644f606b7fbedef6accced77c1c5ec0b659"
 metafile = true
