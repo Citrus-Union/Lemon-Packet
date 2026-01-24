@@ -2,7 +2,7 @@ hash-format = "sha256"
 
 [[files]]
 file = ".github/workflows/build.yml"
-hash = "8000e8bdf01767f1de3e3003ad4000ecfcbe8ed6dda28709c641bdde7964ed1f"
+hash = "749eca372835e03c76f1e7df86bedc7f83aa4087e9dd48dde284fe63fcca6e35"
 
 [[files]]
 file = "LICENSE"
@@ -40,7 +40,7 @@ metafile = true
 
 [[files]]
 file = "mods/carpet-ams-addition.pw.toml"
-hash = "fb47bdd70b879e83aebca80fe4896efc472621cf031c270d62cc022e1c51bed3"
+hash = "42654881e4452b4b244221f10fa2127f1431df588d9c3ed0756ef3ea12fa207f"
 metafile = true
 
 [[files]]
@@ -310,7 +310,7 @@ metafile = true
 
 [[files]]
 file = "mods/rems-carpet-addition.pw.toml"
-hash = "30305747b80b1d545a284b093ac5de4a540fcc5dc40c38f799ebea87a6c253ad"
+hash = "a14280d7d38abc0624c0880a6e0a399525ff091c0a6d67d2e0686b48415cf34d"
 metafile = true
 
 [[files]]
