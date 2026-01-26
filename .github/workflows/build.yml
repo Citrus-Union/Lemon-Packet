@@ -51,6 +51,7 @@ jobs:
         if: github.event_name != 'workflow_dispatch' || inputs.publish_release != 'true'
         uses: actions/upload-artifact@v4
         with:
+          name: build-artifacts
           path: Lemon-Packet-v${{ steps.vars.outputs.version }}-mc${{ steps.vars.outputs.mc }}-build.${{ github.run_number }}.mrpack
 
       - name: Publish release
