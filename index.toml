@@ -44,6 +44,11 @@ hash = "42654881e4452b4b244221f10fa2127f1431df588d9c3ed0756ef3ea12fa207f"
 metafile = true
 
 [[files]]
+file = "mods/carpet-lms-addition.pw.toml"
+hash = "569c64d2e4d3de5d8cf5d2c208d1b4150e8ccda8a4538d24fa7f4e9199587a5b"
+metafile = true
+
+[[files]]
 file = "mods/carpet-org-addition.pw.toml"
 hash = "5fbeb3d3759c97dce46a20fcaca0c1e3ac762b8890d798bc4312cc4ced1bae55"
 metafile = true
