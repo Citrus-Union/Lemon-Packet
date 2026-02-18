@@ -2,3 +2,6 @@
 *.mrpack
 .DS_Store
 
+.idea/
+.vscode/
+

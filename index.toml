@@ -1,10 +1,6 @@
 hash-format = "sha256"
 
 [[files]]
-file = ".github/workflows/build.yml"
-hash = "749eca372835e03c76f1e7df86bedc7f83aa4087e9dd48dde284fe63fcca6e35"
-
-[[files]]
 file = "LICENSE"
 hash = "38762e3777f4ec00a6f769062a7c3f704fb78ce08303ecff88558da4c49cf9ea"
 
@@ -40,22 +36,22 @@ metafile = true
 
 [[files]]
 file = "mods/carpet-ams-addition.pw.toml"
-hash = "42654881e4452b4b244221f10fa2127f1431df588d9c3ed0756ef3ea12fa207f"
+hash = "fb47bdd70b879e83aebca80fe4896efc472621cf031c270d62cc022e1c51bed3"
 metafile = true
 
 [[files]]
 file = "mods/carpet-lms-addition.pw.toml"
-hash = "569c64d2e4d3de5d8cf5d2c208d1b4150e8ccda8a4538d24fa7f4e9199587a5b"
+hash = "29972cf4335a6744b92cfd03b99af1ae1218984e5ebd14c38b87d21782a6cf4a"
 metafile = true
 
 [[files]]
 file = "mods/carpet-org-addition.pw.toml"
-hash = "5fbeb3d3759c97dce46a20fcaca0c1e3ac762b8890d798bc4312cc4ced1bae55"
+hash = "d5fd992283d1262252f982807d90d321245dd70555ebbf36b2b58339b3b1c38c"
 metafile = true
 
 [[files]]
 file = "mods/carpet-tis-addition.pw.toml"
-hash = "89a8d009ef7dfb9fa27f06c55a8ae5915437fdb23a8d4938132d2d7ef5d9b9bf"
+hash = "1da3968005c6c75dc95949cecd2a8b3e55bdb1e6f86a9fc0716380a56c473793"
 metafile = true
 
 [[files]]
@@ -65,7 +61,7 @@ metafile = true
 
 [[files]]
 file = "mods/chat-heads.pw.toml"
-hash = "9c07d950e90fcf8a5affaeb4cb1cb7ad8deb93a27e642a944ca3d0bf46d39d79"
+hash = "1cf8276c0543b00ece86a30afa06142fd0fa6950b9df7ba7fd388657b1ca756f"
 metafile = true
 
 [[files]]
@@ -75,7 +71,7 @@ metafile = true
 
 [[files]]
 file = "mods/chest-tracker-port.pw.toml"
-hash = "ceb620890d766020d05d761ed8ca12d975cdb29c821e2e229cc8d87097709346"
+hash = "a5c75b019572090b86eee0a5f11cf371e1fe4cf46b43af6f025bd79de48634bb"
 metafile = true
 
 [[files]]
@@ -110,7 +106,7 @@ metafile = true
 
 [[files]]
 file = "mods/dynamic-fps.pw.toml"
-hash = "1adccdf12bf5475db4651b96574f9147fa5253e7c0116fffe02ab43b35261aff"
+hash = "0cadf1632a675a92e0bbfb060e807c07595bda05526da8a361d782878b510e6b"
 metafile = true
 
 [[files]]
@@ -130,7 +126,7 @@ metafile = true
 
 [[files]]
 file = "mods/fabric-language-kotlin.pw.toml"
-hash = "61afd7af5c645ffd966b2bd86be944eacd1e48a8044e8f67082225d4d9989f0c"
+hash = "408151861cc1b1a4c4e9c8a3550662a2fc36d0ea96ee07b7e96c5d2a6afacf6f"
 metafile = true
 
 [[files]]
@@ -140,7 +136,7 @@ metafile = true
 
 [[files]]
 file = "mods/ferrite-core.pw.toml"
-hash = "186a261ded1911abf559dce21b22eadc1e96de7767982e58f458b82a89a924ba"
+hash = "19b5a6351ca8f850ddb22e07cdae9d83138aaff17a75b21c88b6e0a2b4fb530a"
 metafile = true
 
 [[files]]
@@ -155,7 +151,7 @@ metafile = true
 
 [[files]]
 file = "mods/gca.pw.toml"
-hash = "0349791abde50decad2979e3031922dfa054e0dda58827e7a7d545d49a0f455b"
+hash = "f1733a6738ab1664f54df39a06b6bd95266c0368696cabe57d1cb8062d914922"
 metafile = true
 
 [[files]]
@@ -175,7 +171,7 @@ metafile = true
 
 [[files]]
 file = "mods/immediatelyfast.pw.toml"
-hash = "77364cc74f5c0819ef77e5e2fd11bd304ad98dc193348d3d875e23fae62f8f74"
+hash = "db46aeba51086f72e755106ca1a2196717ddb3844dfd7b781e7a93c57a9d5b32"
 metafile = true
 
 [[files]]
@@ -255,7 +251,7 @@ metafile = true
 
 [[files]]
 file = "mods/modernui-mc-mvus.pw.toml"
-hash = "4e08834443c9feba5811e6b05c302ebd6df6e5349d58f421219aec1606a47c68"
+hash = "2a34e59abed34f5eacc95bb22184e169f46b4d5382737e1fac4f72c076da9eb8"
 metafile = true
 
 [[files]]
@@ -290,7 +286,7 @@ metafile = true
 
 [[files]]
 file = "mods/placeholder-api.pw.toml"
-hash = "e674752dd4dd07c33d9b94f6e19c15ef893c356c3c5ed77aeaf35cf6d2325130"
+hash = "ab6def9d98d3f5bf12f78845bdb770a19d5ca590c571e60184e537ffa14dcbee"
 metafile = true
 
 [[files]]
@@ -355,7 +351,7 @@ metafile = true
 
 [[files]]
 file = "mods/tweakermore.pw.toml"
-hash = "715b86d4669a9f6b7416bbc6545bc4abd1d2ddda401be261b29fb7a1199f9f2d"
+hash = "a1e0166615ae0606b154138c893ad5221f40db0343e21ef6984e749e3f45ac4f"
 metafile = true
 
 [[files]]
@@ -395,17 +391,17 @@ metafile = true
 
 [[files]]
 file = "mods/xaeroplus.pw.toml"
-hash = "48055e223d350e09f68b0bbbb0a7b337584033a93f6bbed2d7dc49b6b9122440"
+hash = "11cc03939af4682da9fb4120e31d7007bbaf4fc85fd2563af4857bbe56df6e20"
 metafile = true
 
 [[files]]
 file = "mods/xaeros-minimap.pw.toml"
-hash = "6b3f90c5a1f2c0e726010893e2dc6751a9614c30323b8b2cfd07b2f5a7728a3d"
+hash = "361986055445d4bc51c04fef877501e7791ee361d3cccedced7344b17d70f8c4"
 metafile = true
 
 [[files]]
 file = "mods/xaeros-world-map.pw.toml"
-hash = "a7ee69b752489e4dbcbe696e85bfb35670f8d6e785b63356d0645acffcb1786e"
+hash = "428c9b21e6c1cccaa18ab2afcba72b0bef30aa81cb392d8624699fe5934600b6"
 metafile = true
 
 [[files]]
@@ -425,5 +421,5 @@ metafile = true
 
 [[files]]
 file = "shaderpacks/bsl-shaders.pw.toml"
-hash = "71cf0534dd8b064616a6120c2b93023340bc79d2db21a1d9197087b9c9d7eee5"
+hash = "015b33a9619d0a9ce18bc30b0a06dbb388b7d8ba0f24d63b4bc3db88bdb25101"
 metafile = true

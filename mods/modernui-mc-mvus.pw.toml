@@ -1,13 +1,13 @@
 name = "Modern UI mVUS"
-filename = "ModernUI-MC-3.12.0.5-build.3+mc1.21.10-fabric.jar"
+filename = "ModernUI-MC-3.12.0.5-build.4+mc1.21.10-fabric.jar"
 side = "client"
 
 [download]
-url = "https://cdn.modrinth.com/data/2C0marwF/versions/TNnbg3Nq/ModernUI-MC-3.12.0.5-build.3%2Bmc1.21.10-fabric.jar"
+url = "https://cdn.modrinth.com/data/2C0marwF/versions/Lzo9R0d4/ModernUI-MC-3.12.0.5-build.4%2Bmc1.21.10-fabric.jar"
 hash-format = "sha512"
-hash = "288311a2f5d11f3a71b592916ab99531142917aec43337538355fb5d88ff0d3d3ea012575f6d06ef5cd5e3fe63248f470bcba34976bd9a7a68ecadb69c7f044d"
+hash = "043a3cef170fb6912b1e3d81cd9bec08851c4f21a713031997df2cb386702baf215cc3a8d88cb591c1d054eb5d760fd5aa90d5f2fa0838588c595686ed171c8f"
 
 [update]
 [update.modrinth]
 mod-id = "2C0marwF"
-version = "TNnbg3Nq"
+version = "Lzo9R0d4"

@@ -1,13 +1,13 @@
 name = "Carpet LMS Addition"
-filename = "carpet-lms-addition-v1.3.1-mc1.21.10.jar"
+filename = "carpet-lms-addition-v1.4.1-mc1.21.10.jar"
 side = "both"
 
 [download]
-url = "https://cdn.modrinth.com/data/fcv5tQYp/versions/LvSbsd4p/carpet-lms-addition-v1.3.1-mc1.21.10.jar"
+url = "https://cdn.modrinth.com/data/fcv5tQYp/versions/ingHXVmS/carpet-lms-addition-v1.4.1-mc1.21.10.jar"
 hash-format = "sha512"
-hash = "f8560ef02f3c453c1300ea53a5a35c4c62f773c5a64641d3a0779141577e1e5a0b3328b1192e719b7dd27d7e94906bd8c86018aedb6154b05656cae9638b2fde"
+hash = "44a1538d1d32f52c8321d97658b257556e2d0a1abfac0870ef912e416861b7d5fb8f2efd7c17e9dcd30d3c3f87379e16a267140389e483c3bf9b3986bc77ceda"
 
 [update]
 [update.modrinth]
 mod-id = "fcv5tQYp"
-version = "LvSbsd4p"
+version = "ingHXVmS"

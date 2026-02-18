@@ -3,21 +3,29 @@ name: Build
 on:
   push:
   pull_request:
-  workflow_dispatch:
-    inputs:
-      publish_release:
-        description: Publish release
-        type: boolean
-        default: false
+  release:
+    types:
+      - published
 
 jobs:
   build:
     runs-on: ubuntu-latest
     permissions:
-      contents: write
+      contents: read
+    outputs:
+      version: ${{ steps.vars.outputs.version }}
+      mc: ${{ steps.vars.outputs.mc }}
+      pack_name: ${{ steps.vars.outputs.pack_name }}
+      pack_slug: ${{ steps.vars.outputs.pack_slug }}
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
+
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: stable
+          cache: false
 
       - name: Install packwiz
         run: go install github.com/packwiz/packwiz@latest
@@ -27,40 +35,120 @@ jobs:
 
       - name: Read versions
         id: vars
+        shell: bash
         run: |
+          set -euo pipefail
+
           VERSION=$(awk -F'"' '$1 ~ /version =/ {print $2; exit}' pack.toml)
+          PACK_NAME=$(awk -F'"' '$1 ~ /name =/ {print $2; exit}' pack.toml | sed -E 's/^[[:space:]]+//; s/[[:space:]]+$//')
+          MC=$(awk -F'"' '$1 ~ /minecraft =/ {print $2; exit}' pack.toml)
+          PACK_SLUG=$(echo "$PACK_NAME" | tr '[:space:]' '-' | tr -cd '[:alnum:]_.-' | sed -E 's/-+/-/g; s/^-+//; s/-+$//')
+
           echo "version=$VERSION" >> "$GITHUB_OUTPUT"
-          echo "mc=1.21.10" >> "$GITHUB_OUTPUT"
+          echo "pack_name=$PACK_NAME" >> "$GITHUB_OUTPUT"
+          echo "pack_slug=$PACK_SLUG" >> "$GITHUB_OUTPUT"
+          echo "mc=$MC" >> "$GITHUB_OUTPUT"
 
       - name: Export pack
         run: packwiz modrinth export
 
-      - name: Rename pack (push/pr or no release)
-        if: github.event_name != 'workflow_dispatch' || inputs.publish_release != 'true'
+      - name: Rename pack
+        id: pack_file
+        shell: bash
         run: |
-          mv "Lemon Packet-${{ steps.vars.outputs.version }}.mrpack" \
-            "Lemon-Packet-v${{ steps.vars.outputs.version }}-mc${{ steps.vars.outputs.mc }}-build.${{ github.run_number }}.mrpack"
+          set -euo pipefail
 
-      - name: Rename pack (release)
-        if: github.event_name == 'workflow_dispatch' && inputs.publish_release == 'true'
-        run: |
-          mv "Lemon Packet-${{ steps.vars.outputs.version }}.mrpack" \
-            "Lemon-Packet-v${{ steps.vars.outputs.version }}-mc${{ steps.vars.outputs.mc }}.mrpack"
+          SOURCE_FILE=$(ls -1 *.mrpack | head -n 1)
 
-      - name: Upload artifact (push/pr or no release)
-        if: github.event_name != 'workflow_dispatch' || inputs.publish_release != 'true'
+          if [ "${{ github.event_name }}" = "release" ]; then
+            TARGET_FILE="${{ steps.vars.outputs.pack_slug }}-v${{ steps.vars.outputs.version }}-mc${{ steps.vars.outputs.mc }}.mrpack"
+          else
+            TARGET_FILE="${{ steps.vars.outputs.pack_slug }}-v${{ steps.vars.outputs.version }}-mc${{ steps.vars.outputs.mc }}-build.${{ github.run_number }}.mrpack"
+          fi
+
+          mv "$SOURCE_FILE" "$TARGET_FILE"
+          echo "name=$TARGET_FILE" >> "$GITHUB_OUTPUT"
+
+      - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
           name: build-artifacts
-          path: Lemon-Packet-v${{ steps.vars.outputs.version }}-mc${{ steps.vars.outputs.mc }}-build.${{ github.run_number }}.mrpack
+          path: ${{ steps.pack_file.outputs.name }}
 
-      - name: Publish release
-        if: github.event_name == 'workflow_dispatch' && inputs.publish_release == 'true'
-        uses: Kir-Antipov/mc-publish@v3.3
+  publish:
+    if: github.event_name == 'release'
+    needs:
+      - build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Download build artifacts
+        uses: actions/download-artifact@v4
         with:
-          files: Lemon-Packet-v${{ steps.vars.outputs.version }}-mc${{ steps.vars.outputs.mc }}.mrpack
-          name: ${{ format('{0} v{1} for mc{2}', 'Lemon Packet', steps.vars.outputs.version, '1.21.10') }}
-          version: v${{ steps.vars.outputs.version }}
-          modrinth-id: AABBCCDD
-          modrinth-token: ${{ secrets.MODRINTH_TOKEN }}
+          name: build-artifacts
+          path: build-artifacts
+
+      - name: Get github release information
+        id: get_release
+        uses: cardinalby/git-get-release-action@1.2.5
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        with:
+          tag: ${{ github.event.release.tag_name }}
+
+      - name: Prepare file information
+        id: file_info
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          FILE_PATH=$(ls -1 build-artifacts/*.mrpack | head -n 1)
+          FILE_NAME=$(basename "$FILE_PATH")
+          FILE_HASH=$(sha256sum "$FILE_PATH" | awk '{ print $1 }')
+          echo "path=$FILE_PATH" >> "$GITHUB_OUTPUT"
+          echo "name=$FILE_NAME" >> "$GITHUB_OUTPUT"
+          echo "hash=$FILE_HASH" >> "$GITHUB_OUTPUT"
+
+      - name: Prepare changelog
+        uses: actions/github-script@v7
+        id: changelog
+        with:
+          script: return process.env.CHANGELOG
+          result-encoding: string
+        env:
+          CHANGELOG: |-
+            ${{ steps.get_release.outputs.body }}
+
+            -------
+
+            Build Information
+
+            - File name: `${{ steps.file_info.outputs.name }}`
+            - SHA-256: `${{ steps.file_info.outputs.hash }}`
+            - Built from: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+
+      - name: Publish Minecraft Pack
+        uses: Kira-NT/mc-publish@v3.3
+        with:
+          modrinth-id: h1tr1Pgu
+          modrinth-token: ${{ secrets.MODRINTH_API_TOKEN }}
+
+          github-tag: ${{ github.event.release.tag_name }}
           github-token: ${{ secrets.GITHUB_TOKEN }}
+
+          files: ${{ steps.file_info.outputs.path }}
+          name: ${{ format('{0} v{1} for mc{2}', needs.build.outputs.pack_name, needs.build.outputs.version, needs.build.outputs.mc) }}
+          version: ${{ format('v{1}-mc{0}', needs.build.outputs.mc, needs.build.outputs.version) }}
+          version-type: release
+          loaders: fabric
+          game-versions: ${{ needs.build.outputs.mc }}
+          game-version-filter: any
+
+          github-changelog: ${{ steps.get_release.outputs.body }}
+          modrinth-changelog: ${{ steps.changelog.outputs.result }}
+          curseforge-changelog: ${{ steps.changelog.outputs.result }}
+
+          retry-attempts: 3
+          retry-delay: 10000
